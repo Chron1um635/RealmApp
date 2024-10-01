@@ -115,7 +115,9 @@ extension TasksViewController {
             isDone(true)
         }
         
-        let doneAction = UIContextualAction(style: .normal, title: "Done") { [unowned self] _, _, isDone in
+        let doneTitle = task.isComplete ? "Undone" : "Done"
+        
+        let doneAction = UIContextualAction(style: .normal, title: doneTitle) { [unowned self] _, _, isDone in
             storageManager.doneTask(task)
             let currentTaskIndex = IndexPath(
                 row: currentTasks.index(of: task) ?? 0,
